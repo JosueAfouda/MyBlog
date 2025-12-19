@@ -27,6 +27,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const navLinks = [
     { name: 'Articles', path: '/' },
+    { name: 'Cours / Projets', path: '/courses' },
     { name: 'À Propos', path: '/about' },
   ];
 
@@ -55,7 +56,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   key={link.path}
                   to={link.path}
                   className={`text-sm font-medium transition-colors ${
-                    location.pathname === link.path 
+                    location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === link.path
                     ? 'text-slate-900 dark:text-white' 
                     : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
                   }`}
